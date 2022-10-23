@@ -17,6 +17,7 @@ const User = mongoose.model(
       unique: true,
       required: [true, "Please enter an email"],
       trim: true,
+      lowercase: true,
       validate: [isEmail, "Please enter a valid email"],
     },
     email_verified: {
@@ -32,6 +33,7 @@ const User = mongoose.model(
       required: [true, "Please enter a valid password"],
       minlength: [6, "Minimum password length must be 6 characters"],
     },
+    token: String,
     first_name: {
       type: String,
       required: true,
@@ -41,9 +43,8 @@ const User = mongoose.model(
       required: true,
     },
     role: {
-      type: String,
-      default: "user",
-      enum: ["user", "manager", "admin"],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
     },
     address: {
       country: String,

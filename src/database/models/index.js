@@ -7,5 +7,8 @@ mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.User = require("./userModel");
+db.Role = require("./roleModel");
+db.Mess = require("./messModel");
+db.Meal = require("./mealModel");
 
 module.exports = db;

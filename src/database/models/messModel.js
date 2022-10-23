@@ -26,23 +26,39 @@ const Mess = mongoose.model(
       capacity: {
         type: Number,
         max: 15,
+        default: 15,
       },
       seat: {
         type: Boolean,
         default: true,
       },
-      _creator: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "User",
-        },
-      ],
+      status: {
+        type: Boolean,
+        default: true,
+      },
+      _creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
       _members: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "User",
+          _id: false,
+          user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+          },
+          joined_at: {
+            type: Date,
+            default: Date.now,
+          },
         },
       ],
+      // _members: [
+      //   {
+      //     type: mongoose.Schema.Types.ObjectId,
+      //     ref: "User",
+      //   },
+      // ],
     },
     { timestamps: true }
   )

@@ -1,38 +1,47 @@
 const bcrypt = require("bcrypt");
 const authService = require("../services/authService");
+const { request, response } = require("express");
+
+/**
+ *
+ * @param {request} req
+ * @param {response} res
+ */
 
 const createNewAccount = async (req, res) => {
   const { email, password, firstname, lastname, username } = req.body;
 
+  //Check of the incoming data
   if (!email || !password || !firstname || !lastname || !username) {
-    res.send({
+    return res.send({
       status: "FAILED",
       data: {
-        error: "One of the key is missing or empty!",
+        error: "Please enter all the details",
       },
     });
-    return;
   }
 
   //Generating Hash
   const salt = await bcrypt.genSalt(12);
-  const hash = await bcrypt.hash(password, salt);
+  const encryptedUserPassword = await bcrypt.hash(password, salt);
 
   const newUser = {
     username,
     email,
-    password: hash,
+    password: encryptedUserPassword,
     first_name: firstname,
     last_name: lastname,
   };
 
   try {
     const createdNewUser = await authService.createNewAccount(newUser);
+
     res.status(201).send({
       status: "OK",
+      message: "User has been registered Successfully",
       data: createdNewUser,
     });
-
+    //res.cookie({ token: createdNewUser.token });
     return;
   } catch (error) {
     res.status(error?.status).send({
@@ -42,14 +51,14 @@ const createNewAccount = async (req, res) => {
   }
 };
 
-const signInWithCredential = async (req, res) => {
+const signInWithCredential = async (req, res, next) => {
   const { email, username, password } = req.body;
 
   if (!(email || username) || !password) {
     res.send({
       status: "FAILED",
       data: {
-        error: "One of the key is missing or empty!",
+        error: "Username,email or Password not present",
       },
     });
     return;
@@ -62,21 +71,21 @@ const signInWithCredential = async (req, res) => {
   };
 
   try {
-    const getExistingUser = await authService.getOneAccount(existingUser);
+    const userExist = await authService.getOneAccount(existingUser);
 
-    req.session.token = getExistingUser.token;
-    res.status(202).send({
-      status: "Success",
-      message: "Login Successfully !",
-      data: getExistingUser,
+    res.cookie({ token: userExist.token });
+    res.status(200).send({
+      status: "OK",
+      message: "LoggedIn Successfully",
+      data: userExist,
     });
-
     return;
   } catch (error) {
     res.status(error?.status).send({
       status: "FAILED",
       data: { error: error?.message || error },
     });
+    return;
   }
 };
 
