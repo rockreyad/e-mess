@@ -1,12 +1,33 @@
 const mongoose = require("mongoose");
 
+const Info = mongoose.Schema({
+  _id: false,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  meal: {
+    type: Number,
+    default: 0,
+    required: true,
+  },
+  requestMeal: {
+    type: Number,
+    max: 5,
+    default: 0,
+  },
+  provide: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const Meal = mongoose.model(
   "Meal",
   new mongoose.Schema(
     {
       date: {
-        type: Date,
-        default: Date.now,
+        type: String,
       },
       sheet: {
         type: mongoose.Schema.Types.ObjectId,
@@ -18,24 +39,10 @@ const Meal = mongoose.model(
         enum: ["day", "night"],
         required: true,
       },
-      mealInfo: {
-        user: {
-          type: mongoose.Schema.Types.ObjectId, // from
-          ref: "User",
-        },
-        meal: {
-          type: Number,
-          default: 1,
-        },
-        requestMeal: {
-          type: Number,
-          max: 5,
-          default: 0,
-        },
-        provide: {
-          type: Boolean,
-          default: true,
-        },
+      info: [Info],
+      status: {
+        type: Boolean,
+        default: false,
       },
     },
     {

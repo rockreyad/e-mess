@@ -4,7 +4,7 @@
 
 - Manager :
 
-  - Create Mess
+  - Create Mess //COMPLETE
   - Update Mess Information
   - Approve User
   - Remove User
@@ -29,7 +29,7 @@
   - Verify User Identity Document
 
 - User :
-
+  - Join a Mess //COMPLETE
   - Add Deposit (manager will check)
   - Modify Deposit (til manager approve)
   - Add Expenses (manager will check)

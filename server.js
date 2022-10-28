@@ -13,7 +13,7 @@ const { DB, PORT } = require("./src/database/utils/configs/dbConfig");
 const v1UserRouter = require("./src/v1/routes/userRoutes");
 const v1Auth = require("./src/v1/routes/authRoutes");
 const v1MessRouter = require("./src/v1/routes/messRoutes");
-const createRoles = require("./src/database/utils/configs/createRoles");
+const initial = require("./src/database/utils/configs/initial");
 const { createSwagger } = require("./src/v1/swagger");
 
 const app = express();
@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
   res.send({
     status: true,
     message: "Welcome to E-mess API Services",
+    ip: req.ip,
   });
 });
 
@@ -84,7 +85,8 @@ const startApp = async () => {
       success({ message: `Server started on PORT ${PORT}`, badge: true })
     );
 
-    await createRoles(app);
+    await initial.createRoles(app);
+    await initial.createCategories(app);
   } catch (err) {
     error({
       message: `${err}`,

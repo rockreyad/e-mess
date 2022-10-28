@@ -18,4 +18,21 @@ const createRoles = async (app) => {
     throw error;
   }
 };
-module.exports = createRoles;
+
+//REF its not using
+const createCategories = async (app) => {
+  try {
+    const CATEGORIES = await db.Category.count();
+    if (!CATEGORIES) {
+      await db.Category.create([{ name: "utility" }, { name: "meal" }]);
+
+      success({
+        message: "Categories has been Created!",
+        badge: true,
+      });
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+module.exports = { createRoles, createCategories };

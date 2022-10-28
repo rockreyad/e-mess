@@ -6,6 +6,7 @@ const createMess = async (newMess) => {
     const messToInsert = {
       ...newMess,
       _members: [],
+      manager: newMess._creator,
       mess_id: Math.random().toString(36).substr(2, 6).toUpperCase(),
     };
 

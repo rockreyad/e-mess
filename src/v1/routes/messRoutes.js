@@ -1,4 +1,8 @@
 const express = require("express");
+const sheetRoutes = require("./sheetRoutes");
+const mealRoutes = require("./mealRoutes");
+const depositRoutes = require("./depositRoutes");
+
 const {
   createMess,
   joinMess,
@@ -12,10 +16,23 @@ router.use((req, res, next) => {
   next();
 });
 
+//Sheet Routes
+router.use("/sheet", sheetRoutes);
+
+//meal Routes
+router.use("/meal", mealRoutes);
+
+//Deposit Routes
+router.use("/deposit", depositRoutes);
+
 // router.get("/", isUser, createMess);
 router.post("/create", [authJWT.verifyToken, authJWT.isUser], createMess);
 router.post("/update", [authJWT.verifyToken, authJWT.isUser]);
 router.patch("/join", [authJWT.verifyToken, authJWT.isUser], joinMess);
-router.delete("/leave", [authJWT.verifyToken, authJWT.isUser], leaveMess);
+router.delete(
+  "/leave",
+  [authJWT.verifyToken, authJWT.isUser, authJWT.isManager],
+  leaveMess
+);
 
 module.exports = router;

@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 
+const Address = mongoose.Schema({
+  country: String,
+  street1: String,
+  street2: String,
+  city: String,
+  state: String,
+  zip: Number,
+})
+
 const User = mongoose.model(
   "User",
   new mongoose.Schema({
@@ -46,14 +55,7 @@ const User = mongoose.model(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role",
     },
-    address: {
-      country: String,
-      street1: String,
-      street2: String,
-      city: String,
-      state: String,
-      zip: Number,
-    },
+    address: Address,
     time_stamp: {
       created_at: {
         type: Date,

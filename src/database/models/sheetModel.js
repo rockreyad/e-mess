@@ -4,26 +4,42 @@ const Sheet = mongoose.model(
   "Sheet",
   new mongoose.Schema(
     {
-      title: {
-        type: String,
-        trim: true,
-        minlength: 3,
-      },
+      month: String,
       mess: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Mess",
       },
+      members: [
+        {
+          _id: false,
+          userInfo: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+          },
+          mealStatus: {
+            type: Boolean,
+            default: true,
+          },
+        },
+      ],
       manager: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
-      deposit: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Deposit",
+      // categories: [String],
+      categories: {
+        initial: [
+          {
+            type : mongoose.SchemaTypes.ObjectId,
+            ref : "Category"
+          }
+        ],
+        custom : [String]
       },
-      closed: {
+
+      status: {
         type: Boolean,
-        default: false,
+        default: true,
       },
     },
     { timestamps: true }

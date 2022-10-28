@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const Deposit = mongoose.model(
-  "Deposit",
+const Expense = mongoose.model(
+  "Expense",
   new mongoose.Schema(
     {
       date: {
-        type: String,
+        type: Date,
         required: true,
       },
       user: {
@@ -24,7 +24,7 @@ const Deposit = mongoose.model(
       amount: {
         type: Number,
         min: 1,
-        max: [20000, "Amount can't more than 20000"],
+        max: [99999, "Amount can't more than 99999"],
         required: true,
         trim: true,
       },
@@ -40,4 +40,4 @@ const Deposit = mongoose.model(
   )
 );
 
-module.exports = Deposit;
+module.exports = Expense;

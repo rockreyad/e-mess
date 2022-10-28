@@ -3,7 +3,7 @@ const Mess = db.Mess;
 const Role = db.Role;
 const User = db.User;
 
-//Create a new Mess and Update User Role as manager who creates the mess
+//COMPLETE Create a mess Only by a user Whoever exists in a mess
 const createNewMess = async (newMess) => {
   try {
     //make the use manager
@@ -28,9 +28,6 @@ const createNewMess = async (newMess) => {
     const mess = new Mess(newMess);
     await mess.save();
     const roles = await Role.findOne({ name: "manager" });
-    const role = { role: roles };
-
-    //FIXME: Update Role and _join_mess together
 
     //NOTE: update user _joined_mess true
     let join = { _join_mess: true, role: roles };
@@ -41,6 +38,19 @@ const createNewMess = async (newMess) => {
   }
 };
 
+//COMPLETE Join a mess Only User Can Join
+//FIXME manager can't join a mess
+//TODO after a successfully join send him to requested Member List to verify by manager
+/** //REVIEW
+ * Valid user only can join
+ * he can't join , if already in a mess
+ * Only can join if the mess exists
+ * If mess have no seat , he can't join
+ * if members of a mess already capacity of 15 users, he can't join
+ * if Mess is disable he can't join
+ * Add user id in the Mess Member List
+ * Who ever join in a mess update his _join_mess from user data
+ */
 const joinMess = async (messToJoin) => {
   const { user_id, mess_id } = messToJoin;
 
@@ -113,12 +123,22 @@ const joinMess = async (messToJoin) => {
   }
 };
 
+//COMPLETE Leave a mess for manager and user
+
+//TODO randomly pick one user from member of mess and make him manager only manager certain leaves
+/** //REVIEW:
+ * Valid user only can leave
+ * User only can leave when there are in a mess
+ * They can leave only the mess exists
+ * if a manager leave then update his role
+ * who ever leave from a mess update his _join_mess from user data
+ */
 const leaveMess = async (messToLeave) => {
   const { user_id, mess_id } = messToLeave;
 
   try {
     //Find user
-    const userExist = await User.findById(user_id);
+    const userExist = await User.findById(user_id).populate("role");
 
     if (userExist?.id !== user_id) {
       throw {
@@ -146,21 +166,28 @@ const leaveMess = async (messToLeave) => {
       };
     }
 
-    /**TODO:
-     * delete userID from _members
-     * update user _join_mess true to false
-     *
-     */
+    //Check User Role To Leave .. If Manager Leave Then Make his role to User
+    const manager = await Role.findOne({ name: "manager" });
+    if (userExist.role.id === manager.id) {
+      //Manager Leave
+      const user = await Role.findOne({ name: "user" });
+      let updateSomeInfo = { _join_mess: false, role: user };
+      await userExist.updateOne(updateSomeInfo);
+    } else {
+      //User leave
+      let updateSomeInfo = { _join_mess: false };
+      await userExist.updateOne(updateSomeInfo);
+    }
 
+    //eliminate the user from mess members array and returning a new array
     const eliminateMember = messExist._members.filter((item) => {
       return item.user != user_id;
     });
 
     let memberList = { _members: eliminateMember };
     await messExist.updateOne(memberList);
-    //update this user not join in a mess
-    let join = { _join_mess: false };
-    await userExist.updateOne(join);
+
+    messExist.find;
     return messToLeave;
   } catch (error) {
     throw {
@@ -169,4 +196,5 @@ const leaveMess = async (messToLeave) => {
     };
   }
 };
+
 module.exports = { createNewMess, joinMess, leaveMess };

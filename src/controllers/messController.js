@@ -37,6 +37,10 @@ const createMess = async (req, res) => {
   }
 };
 
+const updateMess = (req, res) => {
+  //TODO: updateMess should control by manager
+};
+
 const joinMess = async (req, res) => {
   const { userId, messId } = req.body;
 
