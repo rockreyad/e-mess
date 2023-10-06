@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"cd web && npm run dev\""
+    "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run server:dev\" \"npm run web:dev\"",
+    "server:dev": "cd server && npm run start:dev",
+    "web:dev": "cd web && npm run dev"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
