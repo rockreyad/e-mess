@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "setup": "npm i && cd web && npm i && cd .. && cd server && npm i && cd ..",
     "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run server:dev\" \"npm run web:dev\"",
     "server:dev": "cd server && npm run start:dev",
     "web:dev": "cd web && npm run dev"
