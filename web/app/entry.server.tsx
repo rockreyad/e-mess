@@ -7,20 +7,27 @@
 import { PassThrough } from "node:stream";
 
 import type { AppLoadContext, EntryContext } from "@remix-run/node";
-import { createReadableStreamFromReadable } from "@remix-run/node";
+import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
+import { seoRouteHandlers } from "./seo-routes.server";
+
 const ABORT_DELAY = 5_000;
 
-export default function handleRequest(
+export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
   loadContext: AppLoadContext
 ) {
+  for (const handler of seoRouteHandlers) {
+    const seoRouteResponse = await handler(request, remixContext);
+    if (seoRouteResponse) return seoRouteResponse;
+  }
+
   return isbot(request.headers.get("user-agent"))
     ? handleBotRequest(
         request,
@@ -54,12 +61,11 @@ function handleBotRequest(
         onAllReady() {
           shellRendered = true;
           const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
 
           resolve(
-            new Response(stream, {
+            new Response(body, {
               headers: responseHeaders,
               status: responseStatusCode,
             })
@@ -104,12 +110,11 @@ function handleBrowserRequest(
         onShellReady() {
           shellRendered = true;
           const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
 
           resolve(
-            new Response(stream, {
+            new Response(body, {
               headers: responseHeaders,
               status: responseStatusCode,
             })

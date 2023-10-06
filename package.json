@@ -1,8 +1,19 @@
 {
+  "name": "e-mess",
+  "description": "",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "",
+  "homepage": "https://www.e-mess.com",
+  "repository": "https://github.com/rockreyad/e-mess",
+  "bugs": "https://github.com/rockreyad/e-mess/issues",
+  "private": true,
+  "sideEffects": false,
   "scripts": {
-    "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run server:dev\" \"npm run web:dev\"",
-    "server:dev": "cd server && npm run start:dev",
-    "web:dev": "cd web && npm run dev"
+    "setup": "yarn install && cd server && yarn install && cd ../web && yarn install",
+    "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn run server:dev\" \"yarn run web:dev\"",
+    "server:dev": "cd server && yarn run start:dev",
+    "web:dev": "cd web && yarn run dev"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
