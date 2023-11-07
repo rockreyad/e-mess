@@ -10,10 +10,10 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "setup": "yarn install && cd server && yarn install && cd ../web && yarn install",
-    "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn run server:dev\" \"yarn run web:dev\"",
-    "server:dev": "cd server && yarn run start:dev",
-    "web:dev": "cd web && yarn run dev"
+    "setup": "pnpm install && cd server && pnpm install && cd ../web && pnpm install",
+    "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"pnpm server:dev\" \"pnpm web:dev\"",
+    "server:dev": "cd server && pnpm start:dev",
+    "web:dev": "cd web && pnpm dev"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
