@@ -34,11 +34,8 @@ devDependencies:
   "@tanstack/eslint-plugin-query":
     specifier: ^5.6.0
     version: 5.6.0(eslint@8.53.0)(typescript@5.2.2)
-  "@types/eslint":
-    specifier: ^8.44.7
-    version: 8.44.7
   "@types/node":
-    specifier: ^20
+    specifier: ^20.8.10
     version: 20.8.10
   "@types/react":
     specifier: ^18
@@ -49,9 +46,6 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.31)
-  eslint:
-    specifier: ^8
-    version: 8.53.0
   eslint-config-next:
     specifier: 14.0.1
     version: 14.0.1(eslint@8.53.0)(typescript@5.2.2)
@@ -458,23 +452,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
-
-  /@types/eslint@8.44.7:
-    resolution:
-      {
-        integrity: sha512-f5ORu2hcBbKei97U73mf+l9t4zTGl74IqZ0GQk4oVea/VS8tQZYkUveSYojk+frraAVYId0V2WC9O4PTNru2FQ==,
-      }
-    dependencies:
-      "@types/estree": 1.0.5
-      "@types/json-schema": 7.0.15
-    dev: true
-
-  /@types/estree@1.0.5:
-    resolution:
-      {
-        integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==,
-      }
-    dev: true
 
   /@types/json-schema@7.0.15:
     resolution:
