@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-gt-alsheim-pro)"],
+        "gt-alsheim-pro": ["var(--font-gt-alsheim-pro)"],
       },
     },
   },

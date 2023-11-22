@@ -6,7 +6,7 @@ import {
 } from "@mantine/core";
 import { theme } from "@/style/theme";
 
-const MantineProvider: FC<MantineProviderProps> = ({ children }) => {
+export const MantineProvider: FC<MantineProviderProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme} defaultColorScheme="dark">
       <ColorSchemeScript defaultColorScheme="dark" />
@@ -14,5 +14,3 @@ const MantineProvider: FC<MantineProviderProps> = ({ children }) => {
     </ThemeProvider>
   );
 };
-
-export default MantineProvider;
