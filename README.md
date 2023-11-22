@@ -1,33 +1,36 @@
-# E-Mess Manager 🍽
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Simplify shared living with the Mess Manager app! Say goodbye to messy expenses and meal calculations in shared spaces.
+## Getting Started
 
-## Why Mess Manager? 🤔
+First, run the development server:
 
-- **Easy to use** - Mess Manager is easy to use and understand. It is designed to be used by anyone.
-- **Saves time** - Mess Manager saves time by automating the process of calculating expenses and meal costs.
-- **Saves money** - Mess Manager saves money by reducing the amount of food wasted and by making sure everyone pays their fair share.
-- **Secure data** - Mess Manager uses a secure database to store all the data. It also uses a secure login system to make sure only authorized users can access the data.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Features 🎉
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- **Dashboard** - The dashboard shows the total expenses and the total meal costs for the current month. It also shows the total expenses and the total meal costs for the previous month.
-- **Expenses** - The expenses page shows all the expenses for the current month. It also shows the total expenses for the current month.
-- **Meal Costs** - The meal costs page shows all the meal costs for the current month. It also shows the total meal costs for the current month.
-- **Add Expense** - The add expense page allows the user to add an expense. The user can enter the name of the expense, the amount of the expense, and the date of the expense.
-- **Add Meal Cost** - The add meal cost page allows the user to add a meal cost. The user can enter the name of the meal cost, the amount of the meal cost, and the date of the meal cost.
-- **Join Mess** - The join mess page allows the user to join a mess by entering the mess code. The user should be able to join only if manager allows.
-- **Create Expense Category** - The create expense category page allows the user to create an expense category. The user can enter the name of the expense category.
-- **Role Based Access Control** - The role based access control allows the manager to give access to the members of the mess. The manager can give access to the members by assigning them a role.
-- **Request Extra Meal** - The request extra meal page allows the user to request extra meal. The user can enter the name of the extra meal, the amount of the extra meal, and the date of the extra meal.
-- **Meal Control** - Turn on/off meal control for a specific days of the week.
-- **Monthly Report** - The monthly report page shows the total expenses and the total meal costs for the current month. It also shows the total expenses and the total meal costs for the previous month.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Built With 🛠
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-- [RemixJs](https://remix.run/) - A full-stack JavaScript framework for the modern web.
-- [NestJs](https://nestjs.com/) - A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
+## Learn More
 
-## Contributing 🤝
+To learn more about Next.js, take a look at the following resources:
 
-Contributions, issues and feature requests are welcome!
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
