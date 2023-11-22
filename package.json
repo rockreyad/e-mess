@@ -1,21 +1,44 @@
 {
   "name": "e-mess",
-  "description": "",
-  "version": "0.0.0",
-  "license": "MIT",
-  "author": "",
-  "homepage": "https://www.e-mess.com",
-  "repository": "https://github.com/rockreyad/e-mess",
-  "bugs": "https://github.com/rockreyad/e-mess/issues",
+  "version": "0.1.0",
   "private": true,
-  "sideEffects": false,
+  "packageManager": "pnpm@8.9.1",
   "scripts": {
-    "setup": "pnpm install && cd server && pnpm install && cd ../web && pnpm install",
-    "start": "concurrently --names \"server,web\" -c \"bgBlue.bold,bgGreen.bold\" \"pnpm server:dev\" \"pnpm web:dev\"",
-    "server:dev": "cd server && pnpm start:dev",
-    "web:dev": "cd web && pnpm dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write --ignore-unknown --cache .",
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "test": "yarn prettier:check && yarn lint"
+  },
+  "git": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "lint-staged": "^15.1.0",
+    "postcss": "^8",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }
