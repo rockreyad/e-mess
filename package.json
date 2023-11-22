@@ -20,6 +20,8 @@
     "*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@mantine/core": "^7.2.2",
+    "@mantine/hooks": "^7.2.2",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
     "next": "14.0.3",

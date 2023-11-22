@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <main>Welcome to E-mess</main>;
+  return <main>Welcome to E-mess 1029303456</main>;
 }
