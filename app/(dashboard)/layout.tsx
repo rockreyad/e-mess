@@ -31,13 +31,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           size="sm"
           mr="xl"
         />
+        <Text fw={"bold"} size="lg">
+          Navbar
+        </Text>
       </AppShell.Header>
       <AppShell.Main>{children}</AppShell.Main>
-      <AppShell.Footer>
-        <Text w="full" size="sm" c="gray">
-          CopyRight © 2023 e-mess
-        </Text>
-      </AppShell.Footer>
     </AppShell>
   );
 }
