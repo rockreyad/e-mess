@@ -8,8 +8,8 @@ import { theme } from "@/style/theme";
 
 export const MantineProvider: FC<MantineProviderProps> = ({ children }) => {
   return (
-    <ThemeProvider theme={theme} defaultColorScheme="dark">
-      <ColorSchemeScript defaultColorScheme="dark" />
+    <ThemeProvider theme={theme}>
+      <ColorSchemeScript />
       {children}
     </ThemeProvider>
   );
