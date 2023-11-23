@@ -25,8 +25,8 @@ Simplify shared living with the Mess Manager app! Say goodbye to messy expenses 
 
 ### Built With 🛠
 
-- [RemixJs](https://remix.run/) - A full-stack JavaScript framework for the modern web.
-- [NestJs](https://nestjs.com/) - A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
+- [NextJs](https://nextjs.org/) - Supercharged React apps.
+- [Mantine](https://mantine.dev/) - React components and hooks library with native dark theme support focused on usability, accessibility and developer experience.
 
 ## Contributing 🤝
 
