@@ -1,6 +1,7 @@
 "use client";
 import { Sidebar } from "@/components/Sidebar";
 import { sidebarItems } from "@/components/Sidebar/sidebar-item";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { AppShell, Burger, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ReactNode } from "react";
@@ -12,7 +13,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     <AppShell
       header={{ height: 60 }}
       navbar={{
-        width: 300,
+        width: 200,
         breakpoint: "sm",
         collapsed: { mobile: !opened },
       }}
@@ -23,7 +24,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <AppShell.Navbar>
         <Sidebar data={sidebarItems} hidden={!opened} />
       </AppShell.Navbar>
-      <AppShell.Header>
+      <AppShell.Header display={"flex"} className="justify-between">
         <Burger
           opened={opened}
           onClick={toggle}
@@ -34,6 +35,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <Text fw={"bold"} size="lg">
           Navbar
         </Text>
+        <ThemeSwitcher />
       </AppShell.Header>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
