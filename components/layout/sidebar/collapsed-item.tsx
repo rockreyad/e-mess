@@ -6,12 +6,14 @@ import {
   IconButton,
   LinkOverlay,
   Icon,
-  chakra,
+  Text,
 } from "@chakra-ui/react";
-import Link from "next/link";
+import NextLink from "next/link";
 import React from "react";
 import { NavItem } from "./nav-item";
+
 const CollapsedItem = (props: NavItem & { scheme?: string }) => {
+  console.log(props);
   return (
     <Tooltip hasArrow label={props.name} placement="right">
       <LinkBox display="flex" justifyContent="center">
@@ -24,13 +26,12 @@ const CollapsedItem = (props: NavItem & { scheme?: string }) => {
           _focus={{ shadow: "none" }}
           icon={
             <>
-              <Link href={props.href || ""}>
-                <LinkOverlay>
-                  <Icon as={props.icon} fontSize="lg" />
-                </LinkOverlay>
-              </Link>
+              <LinkOverlay as={NextLink} href={props.href || ""}>
+                <Icon as={props.icon} fontSize="lg" />
+              </LinkOverlay>
               {props.count && (
-                <chakra.span
+                <Text
+                  as={"span"}
                   pos="absolute"
                   top="-1px"
                   right="-1px"
@@ -45,7 +46,7 @@ const CollapsedItem = (props: NavItem & { scheme?: string }) => {
                   rounded="full"
                 >
                   {props.count}
-                </chakra.span>
+                </Text>
               )}
             </>
           }

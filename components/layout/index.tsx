@@ -1,3 +1,4 @@
+"use client";
 import React, { createContext } from "react";
 // import Navbar from "./navbar";
 import Page from "./page";
@@ -10,6 +11,7 @@ import {
   Stack,
   Box,
 } from "@chakra-ui/react";
+import Navbar from "../navbar";
 
 export const NavContext = createContext<UseDisclosureReturn | null>(null);
 
@@ -19,7 +21,7 @@ const SiteLayout = ({ children }: any) => {
   return (
     <NavContext.Provider value={sidebarState}>
       <Box textStyle="light">
-        {/* <Navbar /> */}
+        <Navbar />
         <Box pos="relative" h="max-content" m={{ base: 2, md: 5 }}>
           <Stack direction="row" spacing={{ md: 5 }}>
             <Sidebar />

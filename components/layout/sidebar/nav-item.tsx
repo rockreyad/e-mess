@@ -10,8 +10,6 @@ import {
   Spacer,
   Stack,
   Text,
-  chakra,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { IconType } from "react-icons/lib";
 
@@ -23,7 +21,7 @@ export type NavItem = {
   name: string;
 };
 const NavItem = (props: NavItem) => {
-  const activeColor = useColorModeValue("brand.600", "white");
+  const activeColor = props.active ? "bg.100" : "white";
   const activeProps: BoxProps = {
     color: activeColor,
     borderRightColor: props.active ? activeColor : "transparent",
@@ -47,14 +45,13 @@ const NavItem = (props: NavItem) => {
         {...(props.active && activeProps)}
       >
         <Icon as={props.icon} fontSize="xl" />
-        <NextLink href={props.href || ""} passHref>
-          <LinkOverlay>
-            <Text>{props.name}</Text>
-          </LinkOverlay>
-        </NextLink>
+        <LinkOverlay as={NextLink} href={props.href || ""} passHref>
+          <Text as={"p"}>{props.name}</Text>
+        </LinkOverlay>
         <Spacer />
         {props.count && (
-          <chakra.span
+          <Text
+            as={"span"}
             display="inline-flex"
             alignItems="center"
             justifyContent="center"
@@ -68,7 +65,7 @@ const NavItem = (props: NavItem) => {
             rounded="full"
           >
             {props.count}
-          </chakra.span>
+          </Text>
         )}
       </Stack>
     </LinkBox>

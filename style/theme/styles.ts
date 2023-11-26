@@ -1,9 +1,14 @@
-const colors = {
-  brand: {
-    900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
-  },
-};
+import { StyleFunctionProps } from "@chakra-ui/react";
 
-export { colors };
+export const styles = {
+  global: (props: StyleFunctionProps) => ({
+    body: {
+      fontFamily: "body",
+      bg: props.colorMode === "dark" ? "bg.900" : "gray.50",
+      minH: "100%",
+    },
+    html: {
+      minH: "100%",
+    },
+  }),
+};
