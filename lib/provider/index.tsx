@@ -1,8 +1,13 @@
 import React, { FC, PropsWithChildren } from "react";
 import { QueryProvider } from "./query-provider";
+import { Chakra } from "./chakra";
 
 interface ProvidersProps extends PropsWithChildren {}
 
 export const Providers: FC<ProvidersProps> = ({ children }) => {
-  return <QueryProvider>{children}</QueryProvider>;
+  return (
+    <QueryProvider>
+      <Chakra>{children}</Chakra>
+    </QueryProvider>
+  );
 };
