@@ -39,6 +39,10 @@ export const gt_alsheim_pro = localFont({
   variable: "--font-gt-alsheim-pro",
 });
 
+enum Font {
+  "gt-alsheim-pro" = "font-gt-alsheim-pro",
+}
+
 export const fontMapper = {
-  "font-gt-alsheim-pro": gt_alsheim_pro.variable,
-} as Record<string, string>;
+  [Font["gt-alsheim-pro"]]: gt_alsheim_pro,
+};

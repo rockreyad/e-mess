@@ -5,7 +5,6 @@ import {
   Stack,
   DrawerCloseButton,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import IntegrationItem from "./integration-item";
 import NavItem from "./nav-item";
@@ -13,18 +12,11 @@ import SectionDivider from "./section-divider";
 import { FiPlus, FiPower, FiSettings } from "react-icons/fi";
 import { integrations, routes } from ".";
 import { NavContext } from "..";
+import { usePathname } from "next/navigation";
 
 const MobileSidebar = () => {
-  const router = useRouter();
+  const pathname = usePathname();
   const { isOpen, onClose } = useContext(NavContext)!;
-
-  useEffect(() => {
-    router.events.on("routeChangeComplete", onClose);
-    return () => {
-      router.events.off("routeChangeComplete", onClose);
-    };
-  }, [router.events, onClose]);
-
   return (
     <Drawer isOpen={isOpen} onClose={onClose} placement="left">
       <DrawerOverlay display={{ base: "initial", md: "none" }}>
@@ -35,7 +27,7 @@ const MobileSidebar = () => {
             {routes.map((props, rid) => (
               <NavItem
                 key={`nav-item-${rid}`}
-                active={router.pathname === props.href}
+                active={pathname === props.href}
                 {...props}
               />
             ))}
