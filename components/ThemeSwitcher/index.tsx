@@ -1,25 +1,22 @@
 "use client";
 import React from "react";
-import {
-  VStack,
-  IconButton,
-  useColorMode,
-  useColorModeValue,
-  Heading,
-} from "@chakra-ui/react";
-import { BsSun, BsMoon } from "react-icons/bs";
+import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export const ThemeSwitcher = () => {
-  const { toggleColorMode } = useColorMode();
+  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  const text = useColorModeValue("dark", "light");
+  const { toggleColorMode: toggleMode } = useColorMode();
 
   return (
     <IconButton
-      aria-label="theme-switcher"
-      variant="outline"
-      colorScheme="black"
-      size="lg"
-      icon={useColorModeValue(<BsMoon />, <BsSun />)}
-      onClick={toggleColorMode}
+      size="sm"
+      fontSize="lg"
+      aria-label={`Switch to ${text} mode`}
+      title={`Switch to ${text} mode`}
+      variant="ghost"
+      onClick={toggleMode}
+      icon={<SwitchIcon />}
     />
   );
 };
