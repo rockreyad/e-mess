@@ -16,14 +16,14 @@ import { NavContext } from "..";
 
 const MobileSidebar = () => {
   const router = useRouter();
-  const { isOpen, onClose } = useContext(NavContext);
+  const { isOpen, onClose } = useContext(NavContext)!;
 
   useEffect(() => {
     router.events.on("routeChangeComplete", onClose);
     return () => {
       router.events.off("routeChangeComplete", onClose);
     };
-  }, []);
+  }, [router.events, onClose]);
 
   return (
     <Drawer isOpen={isOpen} onClose={onClose} placement="left">

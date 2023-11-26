@@ -11,7 +11,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-export const NavContext = createContext<UseDisclosureReturn>(null);
+export const NavContext = createContext<UseDisclosureReturn | null>(null);
 
 const SiteLayout = ({ children }: any) => {
   const sidebarState = useDisclosure();
@@ -20,7 +20,7 @@ const SiteLayout = ({ children }: any) => {
     <NavContext.Provider value={sidebarState}>
       <Box textStyle="light">
         {/* <Navbar /> */}
-        <Box pos="relative" h="max-content" m={[2, , 5]}>
+        <Box pos="relative" h="max-content" m={{ base: 2, md: 5 }}>
           <Stack direction="row" spacing={{ md: 5 }}>
             <Sidebar />
             {isSmallScreen && <MobileSidebar />}

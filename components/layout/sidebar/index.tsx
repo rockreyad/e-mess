@@ -18,7 +18,7 @@ import { NavContext } from "..";
 
 const Sidebar = () => {
   const router = useRouter();
-  const { isOpen } = useContext(NavContext);
+  const { isOpen } = useContext(NavContext)!;
   const NavAction = isOpen ? CollapsedItem : NavItem;
   const IntegrationAction = isOpen ? CollapsedItem : IntegrationItem;
   return (
