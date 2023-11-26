@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-// Order seems to matter. If Mantine is imported after tailwind, the tailwind class passed with className is not applied.
-import "@mantine/core/styles.css";
 import "./globals.css";
 import { Providers } from "@/lib/provider";
 import { fontMapper } from "@/font";

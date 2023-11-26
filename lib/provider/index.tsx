@@ -1,13 +1,13 @@
 import React, { FC, PropsWithChildren } from "react";
 import { QueryProvider } from "./query-provider";
-import { MantineProvider } from "./mantine-provider";
+import { Chakra } from "./chakra";
 
 interface ProvidersProps extends PropsWithChildren {}
 
 export const Providers: FC<ProvidersProps> = ({ children }) => {
   return (
     <QueryProvider>
-      <MantineProvider>{children}</MantineProvider>
+      <Chakra>{children}</Chakra>
     </QueryProvider>
   );
 };
