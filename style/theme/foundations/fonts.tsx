@@ -1,8 +1,8 @@
-import { Global } from "@emotion/react";
+import { Global } from '@emotion/react'
 
 const Fonts = () => (
-  <Global
-    styles={`
+	<Global
+		styles={`
       /* Copied from https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Raleway&display=swap */
 
       /* latin-ext */
@@ -241,12 +241,12 @@ const Fonts = () => (
 }
 
       `}
-  />
-);
+	/>
+)
 
-export default Fonts;
+export default Fonts
 
 export const fonts = {
-  heading: "Open Sans",
-  body: "Poppins",
-};
+	heading: 'Open Sans',
+	body: 'Poppins',
+}

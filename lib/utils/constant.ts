@@ -1,3 +1,3 @@
 export const app = {
-  name: "E-Mess",
-};
+	name: 'E-Mess',
+}

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const DashboardPage = async () => {
-  return <div>Content</div>;
-};
+	return <div>Content</div>
+}
 
-export default DashboardPage;
+export default DashboardPage
