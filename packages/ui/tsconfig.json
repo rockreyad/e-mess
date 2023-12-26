@@ -1,8 +1,16 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "baseUrl": ".",
+    "composite": false,
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ES6",
+    "paths": {
+      "@ui/*": ["./*"],
+      "@ui/components/ui*": ["./components/ui*"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
 }
