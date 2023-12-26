@@ -11,8 +11,11 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "format": {
+      "dependsOn": ["^format"]
+    },
     "dev": {
-      "dotEnv": [".env.development.local"],
+      "dotEnv": [".env"],
       "cache": false,
       "persistent": true
     },

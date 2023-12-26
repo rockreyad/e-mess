@@ -6,7 +6,10 @@
   "types": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf node_modules",
+    "introspect": "drizzle-kit introspect:pg --config ./drizzle.config.ts",
+    "generate": "drizzle-kit generate:pg --config ./drizzle.config.ts",
     "db:push": "drizzle-kit push:pg",
+    "db:studio": "drizzle-kit studio:pg",
     "lint": "tsc"
   },
   "dependencies": {
