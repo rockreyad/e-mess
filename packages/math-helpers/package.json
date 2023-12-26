@@ -1,0 +1,19 @@
+{
+  "name": "@repo/math-helpers",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "clean": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "typescript": "5.3.3",
+    "eslint": "8.56.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
+  }
+}
