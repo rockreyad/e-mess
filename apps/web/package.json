@@ -6,10 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings 0"
+    "clean": "rm -rf node_modules",
+    "lint": "eslint . --max-warnings 0",
+    "db:push": "dotenv drizzle-kit push:pg",
+    "db:studio": "dotenv drizzle-kit studio"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "@repo/db": "workspace:*",
+    "@repo/math-helpers": "workspace:*",
     "next": "^14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
