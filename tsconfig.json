@@ -1,3 +1,6 @@
 {
-  "extends": "@turbocharger/ts-config/base.json"
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true
+  }
 }
