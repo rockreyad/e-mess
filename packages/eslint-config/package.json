@@ -11,6 +11,9 @@
     "next.js",
     "react.js"
   ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  },
   "devDependencies": {
     "@vercel/style-guide": "^5.0.0",
     "@next/eslint-plugin-next": "^13.4.19",
