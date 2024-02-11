@@ -14,7 +14,8 @@
     "build": "tsup",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",

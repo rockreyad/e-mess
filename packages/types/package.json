@@ -5,6 +5,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
   "devDependencies": {
     "@turbocharger/database": "*"
   }

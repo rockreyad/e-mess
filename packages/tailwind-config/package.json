@@ -6,6 +6,9 @@
     "access": "public"
   },
   "types": "index.ts",
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
   "devDependencies": {
     "tailwindcss": "^3.2.4",
     "tailwindcss-animate": "^1.0.7"
